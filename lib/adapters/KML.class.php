@@ -118,14 +118,25 @@ class KML extends GeoAdapter
     protected function parseData(DOMElement $element) {
         $data = array();
 
+        var_dump($element->nodeValue);
+
         // Attempt to get extended data
         $extended_data = $element->getElementsByTagName('extendeddata');
+
+        var_dump($extended_data);
+
         /* @var $extended_data DOMNodeList */
         if ($extended_data->length) {
             $schema_data = $extended_data->item(0)->getElementsByTagName('schemadata');
             /* @var $schema_data DOMNodeList */
+
+            var_dump($schema_data);
+
             if ($schema_data->length) {
                 $simple_data = $schema_data->item(0)->getElementsByTagName('simpledata');
+
+                var_dump($simple_data);
+
                 if ($simple_data->length) {
                     foreach ($simple_data as $sd) { /* @var $sd DOMElement */
                         $data[$sd->getAttribute('name')] = $sd->nodeValue;
@@ -133,6 +144,7 @@ class KML extends GeoAdapter
                 }
             }
         }
+        die;
         return $data;
     }
 
