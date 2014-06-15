@@ -8,6 +8,15 @@ abstract class Geometry
   private   $geos = NULL;
   protected $srid = NULL;
   protected $geom_type;
+  protected $data;
+
+  public function getData() {
+    return $this->data;
+  }
+
+  public function setData($data) {
+    $this->data = $data;
+  }
 
   // Abtract: Standard
   // -----------------
